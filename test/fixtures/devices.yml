@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deviceName: MyString
+  category: MyString
+  isBooked: 
+  bookedFromPerson: 
+  deviceId: MyString
+  systemVersion: MyString
+
+two:
+  deviceName: MyString
+  category: MyString
+  isBooked: 
+  bookedFromPerson: 
+  deviceId: MyString
+  systemVersion: MyString
