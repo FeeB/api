@@ -11,23 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901102249) do
+ActiveRecord::Schema.define(version: 20140903133754) do
 
   create_table "devices", force: true do |t|
     t.string   "deviceName"
     t.string   "category"
-    t.boolean  "isBooked"
+    t.string   "isBooked"
     t.string   "deviceId"
     t.string   "systemVersion"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "person_id"
   end
 
   create_table "people", force: true do |t|
     t.string   "firstName"
     t.string   "lastName"
-    t.boolean  "hasBookedDevice"
-    t.string   "userName"
+    t.string   "hasBookedDevice"
+    t.string   "username"
     t.string   "fullName"
     t.datetime "created_at"
     t.datetime "updated_at"

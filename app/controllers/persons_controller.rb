@@ -1,6 +1,10 @@
 class PersonsController < ApplicationController
 	def index
-		persons = Person.all
+    if params[:username].present?
+      person = Person.find_by(username:params[:username]);
+    else
+		  persons = Person.all
+    end
 		render json: persons, status: 200
 	end
 
@@ -10,7 +14,7 @@ class PersonsController < ApplicationController
   	end
 
   	def create
-    	person = Person.new(params[:person])
+    	@person = Person.create(person_params)
       	if @person.save
         	render json: @person, status: :created
       	else
@@ -35,4 +39,8 @@ class PersonsController < ApplicationController
         	render json: @person.errors, status: :unprocessable_entity
     	end
   	end
+
+    def person_params
+    params.require(:person).permit(:firstName, :lastName, :username, :fullName, :hasBookedDevice)
+  end
 end
