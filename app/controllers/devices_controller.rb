@@ -6,6 +6,10 @@ class DevicesController < ApplicationController
     debugger
     if params[:deviceId].present?
       devices = Device.find_by(deviceId:params[:deviceId]);
+    elsif params[:deviceName].present?
+      devices = Device.find_by(deviceName:params[:deviceName]);
+    elsif params[:person_id].present?
+      devices = Device.find_by(person_id:params[:person_id]);
     else
       devices = Device.all
     end
@@ -27,8 +31,8 @@ class DevicesController < ApplicationController
   end
 
   def update
-   	device = Device.find_by_id(params[:id])
-     	if device.update_attributes(params[:device])
+   	@device = Device.find_by_id(params[:id])
+     	if @device.update_attributes(device_params)
        	head :no_content, status: :ok 
      	else
        	render json: @device.errors, status: :unprocessable_entity 
@@ -45,6 +49,6 @@ class DevicesController < ApplicationController
   end
 
   def device_params
-    params.require(:device).permit(:deviceName, :category, :deviceId, :isBooked, :systemVersion)
+    params.require(:device).permit(:deviceName, :category, :deviceId, :isBooked, :systemVersion, :person_id)
   end
 end
