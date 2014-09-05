@@ -9,7 +9,8 @@ class DevicesController < ApplicationController
     elsif params[:deviceName].present?
       devices = Device.find_by(deviceName:params[:deviceName]);
     elsif params[:person_id].present?
-      devices = Device.find_by(person_id:params[:person_id]);
+      puts :person_id
+      devices = Device.where(:person_id => params[:person_id])
     else
       devices = Device.all
     end
