@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903133754) do
+ActiveRecord::Schema.define(version: 20140922144638) do
 
   create_table "devices", force: true do |t|
     t.string   "deviceName"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20140903133754) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "person_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "image_data_encoded"
+    t.string   "image_url"
   end
 
   create_table "people", force: true do |t|
