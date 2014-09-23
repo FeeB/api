@@ -24,7 +24,7 @@ class PersonsController < ApplicationController
 
   	def update
     	person = Person.find_by_id(params[:id])
-      	if person.update_attributes(params[:person])
+      	if person.update_attributes(person_params)
         	head :no_content, status: :ok 
       	else
         	render json: @person.errors, status: :unprocessable_entity 
@@ -41,6 +41,6 @@ class PersonsController < ApplicationController
   	end
 
     def person_params
-    params.require(:person).permit(:firstName, :lastName, :username, :fullName, :hasBookedDevice)
+      params.require(:person).permit(:firstName, :lastName, :username, :fullName, :hasBookedDevice)
   end
 end
