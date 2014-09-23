@@ -3,7 +3,7 @@ class Device < ActiveRecord::Base
 
 	belongs_to :person
 
-  	has_attached_file :avatar, :styles => { :medium => "300x300>"}, :default_url => "/Users/fbraun/Projects/TestDeviceCabinet/placeholder_image.png"
+  	has_attached_file :avatar, :styles => { :medium => "100x130>"}, :default_url => "/Users/fbraun/Projects/TestDeviceCabinet/placeholder_image.png"
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   	before_save :decode_avatar_data, :avatar_url
@@ -20,7 +20,7 @@ class Device < ActiveRecord::Base
 	end
 
 	def avatar_url
-        self.image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url[:medium]
+        self.image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url(:medium)
     end
 
 end
