@@ -20,8 +20,7 @@ class Device < ActiveRecord::Base
 	end
 
 	def avatar_url
-        self.image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url
-        puts self.image_url
+        self.image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url[:medium]
     end
 
 end
