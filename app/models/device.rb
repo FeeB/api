@@ -9,7 +9,6 @@ class Device < ActiveRecord::Base
   	before_save :decode_avatar_data, :avatar_url
 
 	def decode_avatar_data
-		puts
 		if self.image_data_encoded.present?
 			data = StringIO.new(Base64.decode64(self.image_data_encoded))
 		    data.class.class_eval {attr_accessor :original_filename, :content_type}
@@ -21,7 +20,7 @@ class Device < ActiveRecord::Base
 	end
 
 	def avatar_url
-        self.image_url = "http://localhost:3000/" + avatar.url
+        self.image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url
         puts self.image_url
     end
 
