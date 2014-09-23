@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'paperclip'
+gem 'rails_12factor'
