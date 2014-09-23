@@ -21,7 +21,8 @@ class Device < ActiveRecord::Base
 	end
 
 	def avatar_url
-        self.image_url = avatar.url
+        self.image_url = "http://localhost:3000/" + avatar.url
+        puts self.image_url
     end
 
 end
