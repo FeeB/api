@@ -14,18 +14,21 @@ class DevicesController < ApplicationController
     else
       devices = Device.all
     end
-		render json: devices, status: 200
+		render :json => devices.to_json(include: :person), status: 200
 	end
 
   def show
-  	device = Device.find_by_id(params[:id])
-   	render json: device, status: 200
+    @device = Device.includes(:person).find(params[:id])
+    render :json => @device.to_json(include: :person) 
+    
+  	# device = Device.find_by_id(params[:id])
+   # 	render json: device, status: 200
   end
 
   def create
    	@device = Device.create(device_params)
      	if @device.save
-       	render json: @device, status: :created
+       	render :json => @device.to_json(include: :person), status: :created
      	else
        	render json: @device.errors, status: :unprocessable_entity
      	end
