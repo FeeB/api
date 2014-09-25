@@ -3,7 +3,7 @@ class Device < ActiveRecord::Base
 
 	belongs_to :person
 
-  	has_attached_file :avatar, :styles => { :medium => "100x130>"}, :default_url => "/Users/fbraun/Projects/TestDeviceCabinet/placeholder_image.png"
+  	has_attached_file :avatar, :styles => { :medium => "100x130>"}
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   	before_save :decode_avatar_data, :avatar_url
