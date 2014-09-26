@@ -19,10 +19,7 @@ class DevicesController < ApplicationController
 
   def show
     @device = Device.includes(:person).find(params[:id])
-    render :json => @device.to_json(include: :person) 
-    
-  	# device = Device.find_by_id(params[:id])
-   # 	render json: device, status: 200
+    render :json => @device.to_json(include: :person), status: 200
   end
 
   def create
