@@ -1,3 +1,4 @@
+require 'cloudinary'
 class Device < ActiveRecord::Base
 	attr_accessor :image_data_encoded
 
@@ -6,7 +7,7 @@ class Device < ActiveRecord::Base
   	has_attached_file :avatar, :styles => { :medium => "100x130>"}
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  	before_save :decode_avatar_data, :avatar_url
+  	before_save :decode_avatar_data
 
 	def decode_avatar_data
 		if self.image_data_encoded.present?
@@ -16,11 +17,15 @@ class Device < ActiveRecord::Base
 		    data.content_type = "image/png"
 
 		    self.avatar = data
+		    self.avatar_url
 		end
 	end
 
 	def avatar_url
-        self.image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url(:medium)
+        image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url(:medium)
+        puts image_url
+        self.image_url = Cloudinary::Uploader.upload(image_url)['url'];
+        puts self.image_url
     end
 
 end

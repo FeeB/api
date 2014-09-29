@@ -41,3 +41,4 @@ gem 'spring',        group: :development
 
 gem 'paperclip'
 gem 'rails_12factor'
+gem 'cloudinary'

@@ -1,0 +1,18 @@
+development:
+  cloud_name: "devicecabinet"
+  api_key: "251748564914799"
+  api_secret: "l0-Q5xe680RhvedHjTJemG0Ty10"
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: "devicecabinet"
+  api_key: "251748564914799"
+  api_secret: "l0-Q5xe680RhvedHjTJemG0Ty10"
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: "devicecabinet"
+  api_key: "251748564914799"
+  api_secret: "l0-Q5xe680RhvedHjTJemG0Ty10"
+  enhance_image_tag: true
+  static_image_support: false
