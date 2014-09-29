@@ -22,11 +22,11 @@ class Device < ActiveRecord::Base
 	end
 
 	def avatar_url
-        url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url(:medium)
+        actual_image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url(:medium)
         #url = "http://localhost:3000" + avatar.url(:medium)
         puts '----------------------------------------'
-        puts url
-        self.image_url = Cloudinary::Uploader.upload(url)['url'];
+        puts actual_image_url
+        self.image_url = Cloudinary::Uploader.upload(self.avatar)['url'];
         puts '----------------------------------------'
         puts self.image_url
     end
