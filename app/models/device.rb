@@ -1,4 +1,3 @@
-require 'cloudinary'
 class Device < ActiveRecord::Base
 	attr_accessor :image_data_encoded
 
