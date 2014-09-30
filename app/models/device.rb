@@ -6,7 +6,7 @@ class Device < ActiveRecord::Base
   	has_attached_file :avatar, :styles => { :medium => "100x130>"}
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  	before_save :decode_avatar_data
+  	before_save :decode_avatar_data, :avatar_url
 
 	def decode_avatar_data
 		if self.image_data_encoded.present?
@@ -16,19 +16,18 @@ class Device < ActiveRecord::Base
 		    data.content_type = "image/png"
 
 		    self.avatar = data
+		    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
 		    puts avatar.url
-		    self.avatar_url
 		end
 	end
 
 	def avatar_url
-        actual_image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url(:medium)
-        #url = "http://localhost:3000" + avatar.url(:medium)
+        # actual_image_url = "http://cryptic-journey-8537.herokuapp.com" + avatar.url(:medium)
+        actual_image_url = "http://localhost:3000" + avatar.url(:medium)
         puts '----------------------------------------'
         puts actual_image_url
-        self.image_url = Cloudinary::Uploader.upload(self.avatar)['url'];
+        self.image_url = Cloudinary::Uploader.upload(actual_image_url)['url'];
         puts '----------------------------------------'
         puts self.image_url
     end
-
 end
