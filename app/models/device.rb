@@ -15,7 +15,7 @@ class Device < ActiveRecord::Base
 		    data.original_filename = self.id.to_s + ".png"
 		    data.content_type = "image/png"
 
-		    self.avatar = datax
+		    self.avatar = data
 		    self.image_url = avatar.url(:medium);
 		end
 	end
