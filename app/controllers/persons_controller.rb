@@ -1,7 +1,7 @@
 class PersonsController < ApplicationController
 	def index
-    if params[:username].present?
-      persons = Person.find_by(username:params[:username]);
+    if params[:fullName].present?
+      persons = Person.find_by(fullName:params[:fullName]);
     else
 		  persons = Person.all
     end
