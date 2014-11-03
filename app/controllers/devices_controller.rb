@@ -4,15 +4,15 @@ class DevicesController < ApplicationController
 
 	def index
     debugger
-    if params[:deviceId].present?
-      devices = Device.find_by(deviceId:params[:deviceId]);
-    elsif params[:deviceName].present?
-      devices = Device.find_by(deviceName:params[:deviceName]);
+    if params[:device_id].present?
+      devices = Device.find_by(device_id:params[:device_id]);
+    elsif params[:device_name].present?
+      devices = Device.find_by(device_name:params[:device_name]);
     elsif params[:person_id].present?
       puts :person_id
-      devices = Device.where(:person_id => params[:person_id])
+      devices = Device.where(:person_id => params[:person_id]).order('device_name')
     else
-      devices = Device.all
+      devices = Device.order('device_name')
     end
 		render :json => devices.to_json(include: :person), status: 200
 	end
@@ -50,6 +50,6 @@ class DevicesController < ApplicationController
   end
 
   def device_params
-    params.require(:device).permit(:deviceName, :category, :deviceId, :isBooked, :systemVersion, :person_id, :avatar, :image_data_encoded, :deviceType)
+    params.require(:device).permit(:device_name, :category, :device_id, :is_booked, :system_version, :person_id, :avatar, :image_data_encoded, :device_type)
   end
 end

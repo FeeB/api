@@ -1,9 +1,9 @@
 class PersonsController < ApplicationController
 	def index
     if params[:fullName].present?
-      persons = Person.find_by(fullName:params[:fullName]);
+      persons = Person.find_by(full_name:params[:full_name]);
     else
-		  persons = Person.all
+		  persons = Person.order('last_name')
     end
 		render json: persons, status: 200
 	end
@@ -41,6 +41,6 @@ class PersonsController < ApplicationController
   	end
 
     def person_params
-      params.require(:person).permit(:firstName, :lastName, :username, :fullName, :hasBookedDevice)
+      params.require(:person).permit(:first_name, :last_name, :username, :full_name, :has_booked_device)
   end
 end

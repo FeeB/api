@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924092919) do
+ActiveRecord::Schema.define(version: 20141103093123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "devices", force: true do |t|
-    t.string   "deviceName"
+    t.string   "device_name"
     t.string   "category"
-    t.string   "isBooked"
-    t.string   "deviceId"
-    t.string   "systemVersion"
+    t.string   "is_booked"
+    t.string   "device_id"
+    t.string   "system_version"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "person_id"
@@ -31,15 +31,15 @@ ActiveRecord::Schema.define(version: 20140924092919) do
     t.datetime "avatar_updated_at"
     t.string   "image_data_encoded"
     t.string   "image_url"
-    t.string   "deviceType"
+    t.string   "device_type"
   end
 
   create_table "people", force: true do |t|
-    t.string   "firstName"
-    t.string   "lastName"
-    t.string   "hasBookedDevice"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "has_booked_device"
     t.string   "username"
-    t.string   "fullName"
+    t.string   "full_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
