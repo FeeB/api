@@ -3,7 +3,6 @@ class DevicesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
 
 	def index
-    debugger
     if params[:device_id].present?
       devices = Device.find_by(device_id:params[:device_id]);
     elsif params[:device_name].present?
@@ -16,6 +15,8 @@ class DevicesController < ApplicationController
       devices = Device.order('device_name')
     end
 		render :json => devices.to_json(include: :person), status: 200
+          puts :person_id
+
 	end
 
   def show
