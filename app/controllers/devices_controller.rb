@@ -9,8 +9,9 @@ class DevicesController < ApplicationController
     elsif params[:device_name].present?
       devices = Device.find_by(device_name:params[:device_name]);
     elsif params[:person_id].present?
-      puts :person_id
       devices = Device.where(:person_id => params[:person_id]).order('device_name')
+    elsif params[:booked].present?
+      devices = Device.where(is_booked:params[:booked]);
     else
       devices = Device.order('device_name')
     end
@@ -34,6 +35,7 @@ class DevicesController < ApplicationController
   def update
    	@device = Device.find_by_id(params[:id])
      	if @device.update_attributes(device_params)
+        puts device_params
        	head :no_content, status: :ok 
      	else
        	render json: @device.errors, status: :unprocessable_entity 
