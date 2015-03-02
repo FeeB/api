@@ -53,6 +53,6 @@ class DevicesController < ApplicationController
   end
 
   def device_params
-    params.require(:device).permit(:device_name, :category, :device_id, :is_booked, :system_version, :person_id, :avatar, :image_data_encoded, :device_type)
+    params.permit(:device_name, :category, :device_id, :is_booked, :system_version, :person_id, :avatar, :image_data_encoded, :device_type)
   end
 end

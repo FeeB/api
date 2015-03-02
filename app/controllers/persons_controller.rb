@@ -41,6 +41,6 @@ class PersonsController < ApplicationController
   	end
 
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :username, :full_name, :has_booked_device)
+      params.permit(:first_name, :last_name, :username, :full_name, :has_booked_device)
   end
 end
