@@ -10,7 +10,7 @@ class DevicesController < ApplicationController
     elsif params[:person_id].present?
       devices = Device.where(:person_id => params[:person_id]).order('device_name')
     elsif params[:booked].present?
-      devices = Device.where(is_booked:params[:booked]);
+      devices = Device.where(is_booked:params[:booked]).order('device_name');
     else
       devices = Device.order('device_name')
     end
