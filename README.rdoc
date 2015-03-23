@@ -9,3 +9,7 @@ All important hints to work with Heroku and Rails: https://devcenter.heroku.com/
 Change Data in Database
 console command: heroku run rails console
 Device.find(xx).update_attribute:attribute, value
+
+Paperclip Settings
+Go to app > config > enviroments > production.rb
+Change credentials of paperclip in config.paperclip_defaults
