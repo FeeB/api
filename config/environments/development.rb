@@ -37,11 +37,11 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
-    :url => 'testdevicecabinet.s3.amazonaws.com',
+    :url => 'xxxx.s3.amazonaws.com',
     :s3_credentials => {
-     :bucket => 'testdevicecabinet',
-     :access_key_id => 'AKIAJXNZXVZQT3H66JBA',
-     :secret_access_key => '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'
+     :bucket => 'xxxx',
+     :access_key_id => 'xxxx',
+     :secret_access_key => 'xxx'
     }
   }
 end
